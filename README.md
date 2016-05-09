@@ -13,9 +13,10 @@ This is a long README of the steps, but all the actual code and configuration fo
 
 This walkthrough will acquaint you with the [popular Heroku cloud application platform](https://devcenter.heroku.com/start). Previously, we have been able to create Python Flask apps (see lessons [here](http://www.compjour.org/lessons/flask-single-page/) and [here](http://www.compjour.org/lessons/flask-recalls/)) and run them locally on our own computers. With a cloud service, we are able to put our websites onto the public World Wide Web, with a publicly accessible URL.
 
-The very simple app that I've built as a demo can be found here:
-
+A live version of this lesson's very simple app can be found at this URL:
 https://warm-scrubland-16039.herokuapp.com/
+
+(it'll be slow because I'm using Heroku's free tier)
 
 To reduce the number of new moving parts to learn about, [we'll only worry about creating the simplest of Flask apps](http://www.compjour.org/lessons/flask-single-page/) -- the lesser the complexity, the fewer the dependencies, and thus, the fewer the conflicts. So pay attention to the steps that involve touching the Heroku service and toolset.
 
