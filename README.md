@@ -264,7 +264,70 @@ $ git push heroku master
 
 And with that simple command, Heroku will go through the steps of taking our application code, installing the dependencies we specified in `requirements.txt` and `runtime.txt`, and then starting a webserver as specified in `Procfile`:
 
+(this process takes a lot longer than simply pushing code onto Github to save)
 
+After about 30 seconds, you'll get output telling you how to find your application on the web:
+
+~~~sh
+remote:        https://warm-scrubland-16039.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy.... done.
+To https://git.heroku.com/warm-scrubland-16039.git
+   1c6e386..b0e9510  master -> master
+~~~
+
+My app happens to be given the name __warm-scrubland-16039__, which means that it is now available at the following URL for the whole world:
+
+[https://warm-scrubland-16039.herokuapp.com/](https://warm-scrubland-16039.herokuapp.com/ )
+
+And that's how you make your application available to the world.
+
+
+# Saving your application to Github
+
+For homework purposes -- though not necessarily _this_ app -- you'll want to push your application code to your Github account as well.
+
+You need to create an entirely new repo on Github, e.g. 
+
+      https://github.com/your_username/fun_flask_app
+
+
+Which will result in these instructions:
+
+> ### …or push an existing repository from the command line
+>
+> `git remote add origin git@github.com:your_username/fun_flask_app.git`
+> `git push -u origin master`
+
+
+Replace `your_username` and `fun_flask_app` with the appropriate names. Then add run the given command:
+
+~~~sh
+git remote add origin git@github.com:your_username/fun_flask_app.git
+~~~
+
+The __git add__ and __git commit__ commands stay the same no matter how many repos you push to. But you have to push to each repo specifically and separately:
+
+To get your code on Github:
+
+~~~
+git push origin master
+~~~
+
+And to get it deployed on Heroku:
+
+~~~
+git push heroku master
+~~~
+
+
+
+
+
+
+
+
+# Deleting your 
 
 
 
