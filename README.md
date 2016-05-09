@@ -1,15 +1,30 @@
-These instructions come from here:
 
-https://devcenter.heroku.com/articles/getting-started-with-python#introduction
+# Deploying a simple Flask app to the cloud via Heroku
+
+This walkthrough will acquaint you with the [popular Heroku cloud application platform](https://devcenter.heroku.com/start). Previously, we have been able to create Python Flask apps (see lessons [here](http://www.compjour.org/lessons/flask-single-page/) and [here](http://www.compjour.org/lessons/flask-recalls/)) and run them locally on our own computers. With a cloud service, we are able to put our websites onto the public World Wide Web, with a publicly accessible URL.
+
+To reduce the number of new moving parts to learn about, [we'll only worry about creating the simplest of Flask apps](http://www.compjour.org/lessons/flask-single-page/) -- the lesser the complexity, the fewer the dependencies, and thus, the fewer the conflicts. So pay attention to the steps that involve touching the Heroku service and toolset.
+
+Deploying an app on the cloud just means that we're putting code on a computer that we have no direct control over. Writing the Python app code is the same as it was before, but we have to follow a few Heroku conventions before Heroku will execute our code on its own computers.
+
+Review the lessons on [creating a simple Flask app if you've forgotten how to put together a simple Flask app](http://www.compjour.org/lessons/flask-single-page/).
+
+Some of the instructions in this tutorial comes from these this official Heroku tutorial: [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python). However, be warned, the official tutorial includes a lot of extra steps that may not apply to your system. I've tried to filter them to a minimum.
+
+
+------------------
+
 
 
 # Sign up for Heroku
 
-Signup is free: https://signup.heroku.com/dc
+Heroku, being a Software as a Service (SaaS)-type of service, requires you to create an account and login before you can start using its computers. Don't worry, creating an account and running a simple app is free and doesn't require a credit card.
+
+You can create an account at this URL: [https://signup.heroku.com/dc](https://signup.heroku.com/dc)
 
 ## Download the Heroku toolbelt
 
-Heroku has a command-line "toolbelt" that you must download and install: [https://toolbelt.heroku.com/](https://toolbelt.heroku.com/)
+Heroku has a command-line "toolbelt" that we must download and install in order commands that will simplify our communication with the Heroku servers. The toolbelt can be downloaded at: [https://toolbelt.heroku.com/](https://toolbelt.heroku.com/)
 
 ![image download-heroku-toolbelt.png](readme_assets/images/download-heroku-toolbelt.png)
 
@@ -268,6 +283,9 @@ And with that simple command, Heroku will go through the steps of taking our app
 
 After about 30 seconds, you'll get output telling you how to find your application on the web:
 
+
+![readme_assets/images/heroku-git-push.gif](readme_assets/images/heroku-git-push.gif)
+
 ~~~sh
 remote:        https://warm-scrubland-16039.herokuapp.com/ deployed to Heroku
 remote: 
@@ -297,7 +315,7 @@ Which will result in these instructions:
 > ### …or push an existing repository from the command line
 >
 > `git remote add origin git@github.com:your_username/fun_flask_app.git`
-> `git push -u origin master`
+> 
 
 
 Replace `your_username` and `fun_flask_app` with the appropriate names. Then add run the given command:
@@ -314,7 +332,7 @@ To get your code on Github:
 git push origin master
 ~~~
 
-And to get it deployed on Heroku:
+And, again, to get it deployed on Heroku:
 
 ~~~
 git push heroku master
@@ -322,114 +340,14 @@ git push heroku master
 
 
 
+# Managing your Heroku apps
 
+If you plan on using Heroku to deploy your apps but _not while not paying a monthly bill_, you'll only be able to deploy one live app at a time.
 
+To __destroy__ an app, which will destroy the deployed version and the reserved URL -- but _not_ your local code -- you can select your app via the [Heroku web dashboard](https://dashboard.heroku.com/apps), then delete it via its configuration/settings menu.
 
-
-
-# Deleting your 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Installing the gunicorn web server
-
-Running our code on Heroku requires following a few of their conventions
-
-
-
-
-### Install gunicorn
-
-
-
-
-From the command prompt:
+Or, if you'd rather do it from the command-line with the Heroku toolbelt, use the __apps:destroy__ subcommand:
 
 ~~~sh
-$ heroku login
-Enter your Heroku credentials.
-Email: dn@stanford.edu
-Password (typing will be hidden): 
-Logged in as dn@stanford.edu
-~~~
-
-
-# Starting the app
-
-
-
-## Test it out locally
-
-Run the app as we've done before and visit `http://localhost:5000` to make sure it works in the browser:
-
-~~~py
-$ python app.py
-~~~
-
-
-### Test it out via `heroku local`
-
-The Heroku toolbelt contains a `local` subcommand that let's us test the site as if it were running on Heroku:
-
-~~~py
-$ heroku local
-~~~
-
-Visit http://localhost:5000 again in your browser -- nothing should change.
-
-
-## Create a git repository
-
-~~~sh
-$ git init
-$ git add .
-$ git commit -m 'first'
-~~~
-
-
-### Run `heroku create`
-
-~~~sh
-$ heroku create
-# Creating app... ⬢ damp-island-85817
-# https://damp-island-85817.herokuapp.com/ | https://git.heroku.com/damp-island-85817.git
-~~~
-
-
-Check out the app dashboard at [https://dashboard.heroku.com/apps](https://dashboard.heroku.com/apps)
-
-![image heroku-first-app.png](readme_assets/images/heroku-first-app.png)
-
-If you click through to your app, you'll see its __resources__ page, which will be mostly blank:
-
-![image heroku-first-app-resources.png](readme_assets/images/heroku-first-app-resources.png)
-
---------
-
-
-# Deploying the app
-
-~~~sh
-$ git push heroku master
-~~~
-
-
-If all goes to plan, things will look like this:
-
-~~~
-remote: -----> Launching...
-remote:        Released v3
-remote:        https://damp-island-85817.herokuapp.com/ deployed to Heroku
+$ heroku apps:destroy whatever-yourappnameis-99999
 ~~~
