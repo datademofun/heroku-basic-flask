@@ -6,7 +6,7 @@ A walkthrough on how to get set up with Heroku and its toolkit and then how to d
 
 To see a more advanced Flask app that uses USGS data and Google APIs, checkout this repo: [datademofun/heroku-flask-quakes-lesssimple](https://github.com/datademofun/heroku-flask-quakes-lesssimple)
 
-
+This is a long README of the steps, but all the actual code and configuration for this app is included in this repo. You can copy and deploy it through your own Heroku account.
 
 
 # Deploying a simple Flask app to the cloud via Heroku
@@ -99,7 +99,7 @@ Our simple Flask app has has a couple of __dependencies__: the Python interprete
 
 When we talk about deploying our app onto Heroku, or any cloud service, we are working with _someone else's computer_. And, for the most part, we can't count on "someone else's computer" to have the same software stack as we do.
 
-Part of the convenience of a service like Heroku is that it comes with fairly simple conventions for us to follow in order to get Heroku's computer set up like our computer.
+With Heroku, we have to include some metadata with our application code, so that Heroku knows how to set up a compatible webserver and install the software that our application needs. The metadata can be as simple as including a few plaintext files, which I list below in the next section. 
 
 ## Installing the gunicorn web server
 
@@ -369,6 +369,22 @@ And, again, to get it deployed on Heroku:
 git push heroku master
 ~~~
 
+
+# Changing our application code
+
+Altering the codebase of a Heroku-deployed app is not much different than how we've re-edited and saved code before, except that we have to run __git push heroku master__ in order to update the application on the Heroku server -- Heroku's server doesn't have a mind-meld with our computer's hard drive, we have to notify it of our changes via a `git push`.
+
+However, `git push` doesn't push anything until we've actually changed code -- and added and committed those changes via `git add` and `git commit`.
+
+Give it a try. Change __app.py__. Then add/commit/push:
+
+~~~sh
+git add --all
+git commit -m 'changes'
+git push heroku master
+~~~
+
+Depending on how much you've altered the code base, the push/deploy process may take just as long as the initial install. But that's a reasonable price to pay for an easy process for updating an application that the entire world can access.
 
 
 # Managing your Heroku apps
