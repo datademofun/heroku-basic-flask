@@ -236,9 +236,9 @@ Then, run this command:
 $ heroku create
 ~~~
 
-The __create__ subcommand 
+The __create__ subcommand sets up a URL that your application will live at, and a Git repo from which you'll be pushing your code to on deployment.
 
-You'll get output that looks like this:
+The `heroku create` command results in output that looks like this:
 
 ~~~stdout
 Creating app... ⬢ warm-scrubland-16039
