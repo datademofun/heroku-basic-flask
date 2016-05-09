@@ -3,6 +3,10 @@
 
 This walkthrough will acquaint you with the [popular Heroku cloud application platform](https://devcenter.heroku.com/start). Previously, we have been able to create Python Flask apps (see lessons [here](http://www.compjour.org/lessons/flask-single-page/) and [here](http://www.compjour.org/lessons/flask-recalls/)) and run them locally on our own computers. With a cloud service, we are able to put our websites onto the public World Wide Web, with a publicly accessible URL.
 
+The very simple app that I've built as a demo can be found here:
+
+https://warm-scrubland-16039.herokuapp.com/
+
 To reduce the number of new moving parts to learn about, [we'll only worry about creating the simplest of Flask apps](http://www.compjour.org/lessons/flask-single-page/) -- the lesser the complexity, the fewer the dependencies, and thus, the fewer the conflicts. So pay attention to the steps that involve touching the Heroku service and toolset.
 
 Deploying an app on the cloud just means that we're putting code on a computer that we have no direct control over. Writing the Python app code is the same as it was before, but we have to follow a few Heroku conventions before Heroku will execute our code on its own computers.
@@ -149,12 +153,20 @@ web: gunicorn app:app --log-file=-
 ~~~
 
 
+## Add a .gitignore file
+
+This is not necessary for running an app, but we want to prevent unwanted files from being pushed up to Heroku Git repo (or any git repo) later on. Create a new file named `.gitignore` and copy the contents of the example `.gitignore` file here:
+
+[https://github.com/github/gitignore/blob/master/Python.gitignore](https://github.com/github/gitignore/blob/master/Python.gitignore)
+
+
 
 ## Run `heroku local`
 
 So now our simple Flask app folder contains this file structure:
 
 ~~~
+  ├── .gitignore
   ├── Procfile
   ├── app.py
   ├── requirements.txt
@@ -299,6 +311,15 @@ My app happens to be given the name __warm-scrubland-16039__, which means that i
 [https://warm-scrubland-16039.herokuapp.com/](https://warm-scrubland-16039.herokuapp.com/ )
 
 And that's how you make your application available to the world.
+
+## Scaling the app with dynos
+
+Heroku [has this concept of __dynos__](https://devcenter.heroku.com/articles/dynos), an abstraction of the servers used to host your app and do its computational work. The free account lets you run apps on a single dyno...and by default, your new apps should have a single dyno upon creation. But just incase it doesn't, run this heroku command:
+
+
+~~~sh
+$ heroku ps:scale web=1
+~~~
 
 
 # Saving your application to Github
